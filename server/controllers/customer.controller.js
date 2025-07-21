@@ -8,9 +8,9 @@ exports.createCustomer = asyncWrapper(async(req,res)=>{
     req.status (200).json({message : "New customer created!"})
 })
 
-exports.deleteCustomer = asynWrapper(async(req,res)=>{
+exports.deleteCustomer = asyncWrapper(async(req,res)=>{
     req.status(200).json({message : "Customer deleted!"})
 })
-exports.updateCustomer = asynWrapper(async(req,res)=>{
+exports.updateCustomer = asyncWrapper(async(req,res)=>{
     req.status(200).json({message : "Customer deleted!"})
 })
