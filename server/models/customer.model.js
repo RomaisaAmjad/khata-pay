@@ -18,12 +18,13 @@ const Customer = sequelize.define('Customer',{
         allowNull:false,
     },
     phoneNumber:{
-        type:DataTypes.INTEGER,
-        allowNull:false,
+        type:DataTypes.STRING,
+        allowNull:true,
     },
     runningBalance:{
         type:DataTypes.INTEGER,
         allowNull:false,
+        defaultValue:0,
     },
     createdAt: {
       type: DataTypes.DATE, 
@@ -31,7 +32,6 @@ const Customer = sequelize.define('Customer',{
     updatedAt: {
       type: DataTypes.DATE,
     }
-
 },
 {
     tableName : 'customers',
@@ -42,9 +42,20 @@ Customer.beforeCreate(function(customer){
     const unixDate = getUnixTime(new Date());
     customer.createdAt = unixDate;
     customer.updatedAt = unixDate;
-})
+});
 
-return User;
+Customer.associate = (models) => {
+    Customer.belongsTo(models.User, {
+        foreignKey: 'fk_user_id',
+        as: "User"
+    });
+
+    Customer.hasMany(models.Transaction, {
+        foreignKey: 'fk_customer_id',
+        as: "transactions"
+    });
+};
+
+return Customer;
+
 }
-
-

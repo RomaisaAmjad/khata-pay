@@ -1,4 +1,4 @@
-
+require("dotenv").config({ path: `${process.cwd()}/.env`});
 const express = require ('express');
 const cors = require('cors');
 const PORT = 3000;
@@ -22,6 +22,6 @@ app.use((req,res)=>{
 })
 
 app.listen(PORT,()=>{
-    console.log('Server is running in port : ',PORT);
+    console.log('Server is running in port:',PORT);
 });
 

@@ -9,9 +9,17 @@ const User = sequelize.define('User',{
         allowNull:false,
         primaryKey:true,
     },
-    phoneNumber:{
-        type: DataTypes.INTEGER,
+    name:{
+        type: DataTypes.STRING,
         allowNull:false,
+    },
+    password:{
+        type: DataTypes.STRING,
+        allowNull:false,
+    },
+    phoneNumber:{
+        type: DataTypes.STRING,
+        allowNull:true,
         unique:true,
     },
     createdAt: {
@@ -33,7 +41,12 @@ User.beforeCreate(function(user){
     user.updatedAt = unixDate;
 })
 
+User.associate = (models)=>{ 
+    User.hasMany (models.Customer,{
+        foreignKey:'fk_user_id',
+        as:"User" // as--->alias; giving new name
+    })
+}
 return User;
 }
-
 

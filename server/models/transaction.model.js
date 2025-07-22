@@ -16,12 +16,12 @@ const Transaction = sequelize.define('Transaction',{
     cashIn:{
         type:DataTypes.INTEGER,
         allowNull:false,
-        default : 0,
+        defaultValue : 0,
     },
     cashOut:{
         type:DataTypes.INTEGER,
         allowNull:false,
-        default : 0,
+        defaultValue : 0,
     },
     createdAt: {
       type: DataTypes.DATE, 
@@ -42,7 +42,14 @@ Transaction.beforeCreate(function(transaction){
     transaction.updatedAt = unixDate;
 })
 
-return User;
+Transaction.associate = (models)=>{ 
+    Transaction.belongsTo (models.Customer,{
+        foreignKey:'fk_customer_id',
+        as:"Customer" 
+    });
 }
 
+return Transaction;
+
+}
 
