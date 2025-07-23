@@ -17,9 +17,10 @@ const Customer = sequelize.define('Customer',{
         type:DataTypes.STRING,
         allowNull:false,
     },
-    phoneNumber:{
+    phone_number:{
         type:DataTypes.STRING,
         allowNull:true,
+        
     },
     runningBalance:{
         type:DataTypes.INTEGER,

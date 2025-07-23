@@ -18,9 +18,10 @@ module.exports = {
         type:DataTypes.STRING,
         allowNull:false,
     },
-    phoneNumber:{
+    phone_number:{
         type:DataTypes.BIGINT,
         allowNull:false,
+        
     },
     runningBalance:{
         type:DataTypes.INTEGER,

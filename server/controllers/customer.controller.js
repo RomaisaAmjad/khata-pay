@@ -11,8 +11,8 @@ exports.getAllCustomers = asyncWrapper(async (req, res) => {
 });
 
 exports.createCustomer = asyncWrapper(async(req,res)=>{
-  const {name,phoneNumber} = req.body;
-  const customer = await Customer.create({ fk_user_id : req.user.id, name,phoneNumber,runningBalance:0});
+  const {name,phone_number} = req.body;
+  const customer = await Customer.create({ fk_user_id : req.user.id, name,phone_number,runningBalance:0});
   res.status(201).send(customer);
 })
 
@@ -34,7 +34,7 @@ exports.deleteCustomer = asyncWrapper(async (req, res) => {
 
 exports.updateCustomer = asyncWrapper(async (req, res) => {
   const customerId = req.params.id;
-  const { name, phoneNumber } = req.body;
+  const { name, phone_number } = req.body;
   const customer = await Customer.findOne({
     where: {
       id: customerId,
@@ -47,7 +47,7 @@ exports.updateCustomer = asyncWrapper(async (req, res) => {
   }
 
   customer.name = name || customer.name;
-  customer.phoneNumber = phoneNumber || customer.phoneNumber;
+  customer.phone_number = phone_number || customer.phone_number;
 
   await customer.save();
   res.status(200).json({ message: "Customer updated successfully", customer });

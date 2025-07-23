@@ -6,11 +6,11 @@ const {asyncWrapper} = require('../middlewares/asyncWrapper.middleware.js');
 
 exports.signUp = asyncWrapper(async (req,res)=>{
     
-  const { name,password,phoneNumber } = req.body;
+  const { name,password,phone_number } = req.body;
   const hashedPassword = await bcrypt.hash(password, 12);
   const user = await User.create({
     name,
-    phoneNumber,
+    phone_number,
     password: hashedPassword,
   });
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
@@ -20,7 +20,7 @@ exports.signUp = asyncWrapper(async (req,res)=>{
   const userData = {
     id: user.id,
     name: user.name,
-    phoneNumber:user.phoneNumber,
+    phone_number:user.phone_number,
   };
   return res
     .status(200)
@@ -45,7 +45,7 @@ exports.logIn = asyncWrapper(async (req,res)=>{
     const userData = {
       id: user.id,
       name: user.name,
-      phoneNumber:user.phoneNumber,
+      phone_number:user.phone_number,
 
     };
     return res.status(200).json({userData,token,message:"Logged in succeddfully"});
