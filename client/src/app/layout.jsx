@@ -17,11 +17,9 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const theme = createTheme({
-  primaryColor: 'blue',
-  colorScheme: 'dark',
-  fontFamily: 'var(--font-geist-sans), sans-serif',
-});
+// const theme = createTheme({
+  
+// });
 
 export const metadata = {
   title: 'Khata Pay',
@@ -36,8 +34,8 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <MantineProvider theme={theme} defaultColorScheme="dark">
-          <Notifications /> {/* ✅ Enable toast notifications */}
+        <MantineProvider>
+          <Notifications /> 
           {children}
         </MantineProvider>
       </body>

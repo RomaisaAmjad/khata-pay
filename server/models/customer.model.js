@@ -1,4 +1,4 @@
-const { getUnixTime} = require ('date-fns');
+const {formatISO} = require ('date-fns');
 module.exports = (sequelize,DataTypes)=>{
 
 const Customer = sequelize.define('Customer',{
@@ -40,7 +40,7 @@ const Customer = sequelize.define('Customer',{
 );
 
 Customer.beforeCreate(function(customer){
-    const unixDate = getUnixTime(new Date());
+    const unixDate = formatISO(new Date());
     customer.createdAt = unixDate;
     customer.updatedAt = unixDate;
 });

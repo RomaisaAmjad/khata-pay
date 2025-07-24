@@ -10,11 +10,29 @@ exports.getAllCustomers = asyncWrapper(async (req, res) => {
   return res.status(200).send(customers);
 });
 
-exports.createCustomer = asyncWrapper(async(req,res)=>{
-  const {name,phone_number} = req.body;
-  const customer = await Customer.create({ fk_user_id : req.user.id, name,phone_number,runningBalance:0});
-  res.status(201).send(customer);
-})
+
+exports.createCustomer = asyncWrapper(async (req, res) => {
+  const { name, phone_number, runningBalance = 0 } = req.body;
+
+  if (!name || !phone_number) {
+    return res.status(400).json({ error: 'Name and phone number are required.' });
+  }
+
+  
+  const customer = await Customer.create({
+    fk_user_id: req.user.id, 
+    name,
+    phone_number,
+    runningBalance,
+  });
+
+
+  return res.status(201).json({
+    message: 'Customer created successfully.',
+    customer,
+  });
+});
+
 
 exports.deleteCustomer = asyncWrapper(async (req, res) => {
   const customerId = req.params.id;

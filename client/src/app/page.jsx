@@ -19,7 +19,7 @@ import {
 } from "@mantine/core";
 import { IconCheck, IconEye, IconEyeOff } from "@tabler/icons-react";
 
-export default function Login({ onBack }) {
+export default function Login() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const hasShown = useRef(false);
@@ -53,7 +53,7 @@ export default function Login({ onBack }) {
       setLoading(true);
 
       try {
-        await loginUser(values);
+        await loginUser(values,router);
 
         notifications.show({
           title: "Login Successful",
@@ -81,14 +81,14 @@ export default function Login({ onBack }) {
         <div className="min-h-screen flex flex-col lg:flex-row lg:grid lg:grid-cols-2 gap-12 items-center justify-center">
 
           {/* Information side */}
-          <div className="hidden lg:flex lg:flex-col lg:justify-center lg:items-start text-[#0a4a1f] space-y-8 h-full">
+          <div className="hidden lg:flex lg:flex-col lg:justify-center lg:items-start text-[#0a4a1f] space-y-1 h-full">
             <div className="space-y-2">
-              <h2 className="text-4xl text-[#0a6b1f] text-justify"
+              <h2 className="text-4xl text-[#0a6b1f] text-justify "
               style={{fontFamily:"Harabara"}}>
                 Let's pick up where you left off!
               </h2>
             </div>
-            <p className="text-xl text-black leading-relaxed font-thin">
+            <p className="text-xl text-black leading-relaxed font-thin ">
               Ready to grow your business? Your digital ledger is waiting.
             </p>
           </div>
@@ -173,9 +173,9 @@ export default function Login({ onBack }) {
                       visibilityToggleIcon={({ reveal }) =>
                         formik.values.password ? (
                           reveal ? (
-                            <IconEyeOff size={18} />
-                          ) : (
                             <IconEye size={18} />
+                          ) : (
+                            <IconEyeOff size={18} />
                           )
                         ) : null
                       }
@@ -187,13 +187,6 @@ export default function Login({ onBack }) {
                           borderRadius: "10px",
                           height: "38px",
                           fontSize: "13px",
-                          "&:focus": {
-                            borderColor: "#00521b",
-                            boxShadow: "0 0 0 2px rgba(99, 102, 241, 0.3)",
-                          },
-                          "&::placeholder": {
-                            color: "#6b7280",
-                          },
                         },
                         error: {
                           fontSize: "12px",
@@ -214,13 +207,13 @@ export default function Login({ onBack }) {
                       <Checkbox
                         
                         label="Remember me"
-                        color="gray"
+                        color="#0a6b1f"
                         radius="xs"
                         size="xs"
                       />
                     </div>
                     <div>
-                      <p className="text-[#0a4a1f] text-xs text-right hover:cursor-pointer">
+                      <p className="text-[#0a4a1f] text-xs text-right hover:cursor-pointer underline">
                         Forgot password?
                       </p>
                     </div>

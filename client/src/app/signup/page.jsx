@@ -20,6 +20,7 @@ export default function Login({ onBack }) {
   const [loading, setLoading] = useState(false);
   const hasShown = useRef(false);
   const router = useRouter();
+  
  useEffect(() => {
     if (!hasShown.current) {
       notifications.show({

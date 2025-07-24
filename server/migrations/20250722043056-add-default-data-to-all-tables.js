@@ -21,8 +21,8 @@ module.exports = {
     name: "Fatima Sheraz",
     password: await bcrypt.hash('Fatima123', 12),
     phone_number: 923004445555,
-    createdAt: new Date('2025-07-21T08:00:00Z'),
-    updatedAt: new Date('2025-07-22T09:00:00Z')
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
   ],{} );
  
@@ -49,16 +49,16 @@ module.exports = {
   name: "Zainab Malik",
   phone_number: 923006667777,
   runningBalance: 0,
-  createdAt: new Date('2025-07-21T12:00:00Z'),
-  updatedAt: new Date('2025-07-22T09:00:00Z')
+  createdAt: new Date(),
+  updatedAt: new Date()
  },
 {
   fk_user_id: 2,
   name: "Ahmad",
   phone_number: 9230336672277,
   runningBalance: 0,
-  createdAt: new Date('2025-07-21T12:00:00Z'),
-  updatedAt: new Date('2025-07-22T09:00:00Z')
+  createdAt: new Date(),
+  updatedAt: new Date()
  },
 ],{});
 
@@ -74,22 +74,22 @@ await queryInterface.bulkInsert(transactionTableName,[
     fk_customer_id: 2,
     cashIn: 0,
     cashOut: 0,
-    createdAt: new Date('2025-07-22T10:00:00Z'),
-    updatedAt: new Date('2025-07-22T12:00:00Z')
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     fk_customer_id: 3,
     cashIn: 0,
     cashOut: 0,
-    createdAt: new Date('2025-07-22T10:00:00Z'),
-    updatedAt: new Date('2025-07-22T12:00:00Z')
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     fk_customer_id: 4,
     cashIn: 0,
     cashOut: 0,
-    createdAt: new Date('2025-07-22T10:00:00Z'),
-    updatedAt: new Date('2025-07-22T12:00:00Z')
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
 ],{});
 

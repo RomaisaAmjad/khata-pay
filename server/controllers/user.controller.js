@@ -21,6 +21,8 @@ exports.signUp = asyncWrapper(async (req,res)=>{
     id: user.id,
     name: user.name,
     phone_number:user.phone_number,
+    createdAt: user.createdAt,
+    updateAt: user.updatedAt,
   };
   return res
     .status(200)
@@ -46,6 +48,8 @@ exports.logIn = asyncWrapper(async (req,res)=>{
       id: user.id,
       name: user.name,
       phone_number:user.phone_number,
+      createdAt: user.createdAt,   
+      updatedAt: user.updatedAt,  
 
     };
     return res.status(200).json({userData,token,message:"Logged in succeddfully"});
