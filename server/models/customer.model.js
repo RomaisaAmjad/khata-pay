@@ -1,4 +1,4 @@
-const { getUnixTime} = require ('date-fns');
+const {formatISO} = require ('date-fns');
 module.exports = (sequelize,DataTypes)=>{
 
 const Customer = sequelize.define('Customer',{
@@ -17,13 +17,15 @@ const Customer = sequelize.define('Customer',{
         type:DataTypes.STRING,
         allowNull:false,
     },
-    phoneNumber:{
-        type:DataTypes.INTEGER,
-        allowNull:false,
+    phone_number:{
+        type:DataTypes.STRING,
+        allowNull:true,
+        
     },
     runningBalance:{
         type:DataTypes.INTEGER,
         allowNull:false,
+        defaultValue:0,
     },
     createdAt: {
       type: DataTypes.DATE, 
@@ -31,7 +33,6 @@ const Customer = sequelize.define('Customer',{
     updatedAt: {
       type: DataTypes.DATE,
     }
-
 },
 {
     tableName : 'customers',
@@ -39,12 +40,23 @@ const Customer = sequelize.define('Customer',{
 );
 
 Customer.beforeCreate(function(customer){
-    const unixDate = getUnixTime(new Date());
+    const unixDate = formatISO(new Date());
     customer.createdAt = unixDate;
     customer.updatedAt = unixDate;
-})
+});
 
-return User;
+Customer.associate = (models) => {
+    Customer.belongsTo(models.User, {
+        foreignKey: 'fk_user_id',
+        as: "User"
+    });
+
+    Customer.hasMany(models.Transaction, {
+        foreignKey: 'fk_customer_id',
+        as: "transactions"
+    });
+};
+
+return Customer;
+
 }
-
-

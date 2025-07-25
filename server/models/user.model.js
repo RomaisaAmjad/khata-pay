@@ -1,4 +1,4 @@
-const { getUnixTime} = require ('date-fns');
+const { formatISO} = require ('date-fns');
 module.exports = (sequelize,DataTypes)=>{
 
 const User = sequelize.define('User',{
@@ -9,9 +9,17 @@ const User = sequelize.define('User',{
         allowNull:false,
         primaryKey:true,
     },
-    phoneNumber:{
-        type: DataTypes.INTEGER,
+    name:{
+        type: DataTypes.STRING,
         allowNull:false,
+    },
+    password:{
+        type: DataTypes.STRING,
+        allowNull:false,
+    },
+    phone_number:{
+        type: DataTypes.STRING,
+        allowNull:true,
         unique:true,
     },
     createdAt: {
@@ -28,12 +36,17 @@ const User = sequelize.define('User',{
 );
 
 User.beforeCreate(function(user){
-    const unixDate = getUnixTime(new Date());
+    const unixDate = formatISO(new Date());
     user.createdAt = unixDate;
     user.updatedAt = unixDate;
 })
 
+User.associate = (models)=>{ 
+    User.hasMany (models.Customer,{
+        foreignKey:'fk_user_id',
+        as:"User" // as--->alias; giving new name
+    })
+}
 return User;
 }
-
 
