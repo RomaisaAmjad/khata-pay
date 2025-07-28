@@ -30,7 +30,7 @@ export default function TransactionsSection() {
       ) : (
         <ul className="grid md:grid-cols-1 gap-2">
           {customers.map((customer) => (
-            <li key={customer.id} className="p-2 bg-white shadow-xs rounded mb-2">
+            <li key={customer.id} className="p-2 bg-white shadow-xs  mb-2">
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-xs font-bold" style={{fontSize:"11px"}}>{customer.name}</p>
@@ -39,7 +39,7 @@ export default function TransactionsSection() {
                 </div>
                 <button
                   onClick={() => handleToggle(customer.id)}
-                  className={`px-3 hover:cursor-pointer rounded text-xs font-normal ${showHistory[customer.id] ? ' hover:cursor-pointer bg-green-700 text-white' : 'bg-gray-200 text-green-700'} transition duration-150 ` }
+                  className={`px-3 hover:cursor-pointer rounded-[6px] text-xs font-normal ${showHistory[customer.id] ? ' hover:cursor-pointer bg-green-700 text-white' : 'bg-gray-200 text-green-700'} transition duration-150 ` }
                   style={{fontSize:"11px",
                     marginRight:"30px",
                     fontFamily:"poppins"
@@ -63,8 +63,8 @@ export default function TransactionsSection() {
                       {transactionsData[customer.id].transactions.map((txn, idx) => (
                         <tr key={txn.id || idx} style={{fontSize:"11px"}}>
                           <td className=" border text-xs">{new Date(txn.createdAt).toLocaleDateString()}</td>
-                          <td className="p-1 border text-xs text-green-700">{txn.cashIn}</td>
-                          <td className="p-1 border text-xs text-red-700">{txn.cashOut}</td>
+                          <td className="p-1 border text-xs">{txn.cashIn}</td>
+                          <td className="p-1 border text-xs">{txn.cashOut}</td>
                           <td className="p-1 border text-xs">{txn.remainingBalance}</td>
                         </tr>
                       ))}

@@ -30,7 +30,7 @@ function EditTransaction({ customer, onClose, onSuccess, setCustomers }) {
           <input
             style={{ fontSize: "13px" }}
             type="number"
-            className="w-full px-3 rounded-xl border border-gray-300 text-xs leading-tight focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="w-full px-3 rounded-[8px] border border-gray-300 text-xs leading-tight focus:outline-none"
             value={cashIn}
             onChange={(e) => setCashIn(e.target.value)}
             min="0"
@@ -41,7 +41,7 @@ function EditTransaction({ customer, onClose, onSuccess, setCustomers }) {
           <input
             style={{ fontSize: "13px" }}
             type="number"
-            className="w-full px-3 rounded-xl border border-gray-300 text-xs leading-tight focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="w-full px-3 rounded-[8px] border border-gray-300 text-xs leading-tight focus:outline-none"
             value={cashOut}
             onChange={(e) => setCashOut(e.target.value)}
             min="0"
@@ -50,7 +50,7 @@ function EditTransaction({ customer, onClose, onSuccess, setCustomers }) {
         <div className="flex justify-end gap-2 mt-6 w-full">
           <button
             onClick={onClose}
-            className="bg-gray-500 text-white rounded-xl hover:cursor-pointer hover:bg-gray-700"
+            className="bg-gray-500 text-white rounded-[8px] hover:cursor-pointer hover:bg-gray-700"
             disabled={loading}
           >
             <span className="text-xs font-light px-2 py-1 flex items-center gap-1" style={{ fontFamily: "monospace" }}>
@@ -62,7 +62,7 @@ function EditTransaction({ customer, onClose, onSuccess, setCustomers }) {
             disabled={loading}
             style={{ fontFamily: "monospace" }}
           >
-            {loading ?  <span className="text-xs font-light px-2 py-1 flex items-center gap-1  bg-green-700 rounded-xl  hover:bg-green-800 hover:cursor-pointer">Saving..</span> :<span className="flex bg-green-900  hover:bg-green-800 text-white justify-center items-center gap-1 rounded-xl py-1 px-2 text-xs  hover:cursor-pointer">Add transaction</span> }
+            {loading ?  <span className="text-xs font-light px-2 py-1 flex items-center gap-1  bg-green-700 rounded-[8px] hover:bg-green-800 hover:cursor-pointer">Saving..</span> :<span className="flex bg-green-900  hover:bg-green-800 text-white justify-center items-center gap-1 rounded-[8px] py-1 px-2 text-xs  hover:cursor-pointer">Add transaction</span> }
           </button>
         </div>
       </div>
