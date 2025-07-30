@@ -12,8 +12,8 @@ function EditCustomer({ customer, onClose, onUpdate, onCreate }) {
 
   useEffect(() => {
     if (customer) {
-      setName(customer.name || "");
-      setPhoneNumber(customer.phone_number || "");
+      setName(customer.name);
+      setPhoneNumber(customer.phone_number);
       setRunningBalance(customer.runningBalance || 0);
     }
   }, [customer]);
